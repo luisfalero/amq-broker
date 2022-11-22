@@ -20,12 +20,24 @@ public class JmsProducer {
     String destinationQueue;
 
     public void sendProducer(String personEntity){
-        log.info("Send = [{}, {}]:", new Object[] {destinationQueue, personEntity});
-        jmsTemplate.convertAndSend(destinationQueue, personEntity);
+        log.info("Send Producer String = [{}, {}]:", new Object[] {destinationQueue, personEntity});
+        jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
+            message.setJMSExpiration(1000);
+            message.setStringProperty("jms-custom-header", "This is a custom jms property v2");
+            message.setBooleanProperty("jms-custom-property", true);
+            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            return message;
+        });
     }
 
     public void sendProducer(PersonEntity personEntity){
-        log.info("Send = [{}, {}]:", new Object[] {destinationQueue, personEntity.toString()});
-        jmsTemplate.convertAndSend(destinationQueue, personEntity);
+        log.info("Send Producer Entity = [{}, {}]:", new Object[] {destinationQueue, personEntity.toString()});
+        jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
+            message.setJMSExpiration(1000);
+            message.setStringProperty("jms-custom-header", "This is a custom jms property v2");
+            message.setBooleanProperty("jms-custom-property", true);
+            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            return message;
+        });
     }
 }

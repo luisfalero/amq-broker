@@ -16,10 +16,10 @@ public class JmsConsumer {
         log.info("Message Payload = [{}]:", message.getPayload());
 
         if (message.getPayload() instanceof String){
-            log.info("Recieved Message = [{}]:", message.getPayload().toString());
+            log.info("Recieved Message String = [{}]:", message.getPayload().toString());
 
         } else if (message.getPayload() instanceof PersonEntity){
-            log.info("Recieved Person = [{}]:", message.getPayload().toString());
+            log.info("Recieved Message Entity = [{}]:", message.getPayload().toString());
 
         } else {
             System.err.println("Message Type Unkown !");

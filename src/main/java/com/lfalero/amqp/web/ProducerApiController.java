@@ -20,7 +20,7 @@ public class ProducerApiController {
         return "Send Person String = " + personEntity;
     }
 
-    @PostMapping(value="/example-json", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value="/example-json", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String producerExample2(@RequestBody PersonEntity personEntity){
         producer.sendProducer(personEntity);
         return "Send Person Done = " + personEntity.toString();
