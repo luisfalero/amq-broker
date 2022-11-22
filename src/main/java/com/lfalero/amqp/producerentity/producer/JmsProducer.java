@@ -17,11 +17,22 @@ public class JmsProducer {
     @Value("${jms.queue.destination}")
     String destinationQueue;
 
+    @Value("${jms.queue.destination2}")
+    String destinationQueue2;
+
     public void send(String msg){
         jmsTemplate.convertAndSend(destinationQueue, msg);
     }
 
     public void send(PersonEntity p){
         jmsTemplate.convertAndSend(destinationQueue, p);
+    }
+
+
+    public void send2(String msg){
+        jmsTemplate.convertAndSend(destinationQueue2, msg);
+    }
+    public void send2(PersonEntity p){
+        jmsTemplate.convertAndSend(destinationQueue2, p);
     }
 }

@@ -25,4 +25,16 @@ public class RestApiController {
         producer.send(p);
         return "Send Person Done" + p.toString();
     }
+
+    @RequestMapping(value="/produce2")
+    public String produce2(@RequestParam("msg") String msg){
+        producer.send(msg);
+        return "Done";
+    }
+
+    @RequestMapping(value="/produce2", method = RequestMethod.POST)
+    public String produce2(@RequestBody PersonEntity p){
+        producer.send(p);
+        return "Send Person Done" + p.toString();
+    }
 }
