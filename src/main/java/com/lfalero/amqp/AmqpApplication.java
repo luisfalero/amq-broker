@@ -8,12 +8,12 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 
-@EnableJms
+//@EnableJms
 @SpringBootApplication
 public class AmqpApplication implements CommandLineRunner {
 
-    @Autowired
-    private JmsTemplate jmsTemplate;
+//    @Autowired
+//    private JmsTemplate jmsTemplate;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AmqpApplication.class, args);
@@ -21,16 +21,16 @@ public class AmqpApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		sendMessage("Hello World!");
+		//sendMessage("Hello World!");
 	}
 
-	public void sendMessage(String text) {
-		System.out.println(String.format("Sending '%s'", text));
-		this.jmsTemplate.convertAndSend("example", text);
-	}
-
-	@JmsListener(destination = "example")
-	public void receiveMessage(String text) {
-		System.out.println(String.format("Received '%s'", text));
-	}
+//	public void sendMessage(String text) {
+//		System.out.println(String.format("Sending '%s'", text));
+//		this.jmsTemplate.convertAndSend("example", text);
+//	}
+//
+//	@JmsListener(destination = "example")
+//	public void receiveMessage(String text) {
+//		System.out.println(String.format("Received '%s'", text));
+//	}
 }
