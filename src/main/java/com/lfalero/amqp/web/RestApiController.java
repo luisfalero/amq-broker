@@ -28,13 +28,13 @@ public class RestApiController {
 
     @RequestMapping(value="/produce2")
     public String produce2(@RequestParam("msg") String msg){
-        producer.send(msg);
-        return "Done";
+        producer.send2(msg);
+        return "Done2";
     }
 
     @RequestMapping(value="/produce2", method = RequestMethod.POST)
     public String produce2(@RequestBody PersonEntity p){
-        producer.send(p);
-        return "Send Person Done" + p.toString();
+        producer.send2(p);
+        return "Send Person Done2" + p.toString();
     }
 }
