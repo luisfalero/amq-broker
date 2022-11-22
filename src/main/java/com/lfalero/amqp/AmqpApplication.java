@@ -26,10 +26,10 @@ public class AmqpApplication implements CommandLineRunner {
 
 //	public void sendMessage(String text) {
 //		System.out.println(String.format("Sending '%s'", text));
-//		this.jmsTemplate.convertAndSend("example", text);
+//		this.jmsTemplate.convertAndSend("registrar-solicitud-credito", text);
 //	}
 //
-//	@JmsListener(destination = "example")
+//	@JmsListener(destination = "registrar-solicitud-credito")
 //	public void receiveMessage(String text) {
 //		System.out.println(String.format("Received '%s'", text));
 //	}
