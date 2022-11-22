@@ -26,9 +26,9 @@ public class JmsProducer {
         jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
             message.setJMSExpiration(1000);
             message.setJMSDeliveryMode(DeliveryMode.NON_PERSISTENT);
-            message.setStringProperty("jms-custom-header", "This is a custom jms property v2");
-            message.setBooleanProperty("jms-custom-property", true);
-            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            message.setStringProperty("JMS_CUSTOM_HEADER", "This is a custom jms property v2");
+            message.setBooleanProperty("JMS_CUSTOM_PROPERTY", true);
+            message.setDoubleProperty("JMS_CUSTOM_PROPERTY_PRICE", 2.0);
             return message;
         });
     }
@@ -38,9 +38,9 @@ public class JmsProducer {
         jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
             message.setJMSExpiration(1000);
             message.setJMSDeliveryMode(DeliveryMode.NON_PERSISTENT);
-            message.setStringProperty("jms-custom-header", "This is a custom jms property v2");
-            message.setBooleanProperty("jms-custom-property", true);
-            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            message.setStringProperty("JMS_CUSTOM_HEADER", "This is a custom jms property v2");
+            message.setBooleanProperty("JMS_CUSTOM_PROPERTY", true);
+            message.setDoubleProperty("JMS_CUSTOM_PROPERTY_PRICE", 2.0);
             return message;
         });
     }
