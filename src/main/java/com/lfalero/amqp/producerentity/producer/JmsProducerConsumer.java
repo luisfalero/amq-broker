@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @EnableJms
-public class JmsProducer {
+public class JmsProducerConsumer {
 
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @Value("${jms.queue.destination2}")
+    @Value("${jms.queue.destination}")
     String destinationQueue;
 
     public void sendProducer(String personEntity){
