@@ -4,6 +4,7 @@ import com.lfalero.amqp.producerentity.model.entity.PersonEntity;
 import com.lfalero.amqp.producerentity.producer.JmsProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,7 +21,7 @@ public class RestApiController {
         return "Done";
     }
 
-    @RequestMapping(value="/produce", method = RequestMethod.POST)
+    @RequestMapping(value="/produce", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
     public String produce(@RequestBody PersonEntity p){
         producer.send(p);
         return "Send Person Done" + p.toString();
@@ -32,7 +33,7 @@ public class RestApiController {
         return "Done2";
     }
 
-    @RequestMapping(value="/produce2", method = RequestMethod.POST)
+    @RequestMapping(value="/produce2", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
     public String produce2(@RequestBody PersonEntity p){
         producer.send2(p);
         return "Send Person Done2" + p.toString();
