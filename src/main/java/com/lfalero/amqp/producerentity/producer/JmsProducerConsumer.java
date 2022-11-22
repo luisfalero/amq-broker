@@ -8,6 +8,8 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.jms.DeliveryMode;
+
 @Slf4j
 @Component
 @EnableJms
@@ -23,9 +25,10 @@ public class JmsProducerConsumer {
         log.info("Send Producer String = [{}, {}]:", new Object[] {destinationQueue, personEntity});
         jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
             message.setJMSExpiration(1000);
-            message.setStringProperty("jms-custom-header", "This is a custom jms property v1");
-            message.setBooleanProperty("jms-custom-property", true);
-            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            message.setJMSDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            message.setStringProperty("JMS_CUSTOM_HEADER", "This is a custom jms property v1");
+            message.setBooleanProperty("JMS_CUSTOM_PROPERTY", true);
+            message.setDoubleProperty("JMS_CUSTOM_PROPERTY_PRICE", 1.0);
             return message;
         });
     }
@@ -34,9 +37,10 @@ public class JmsProducerConsumer {
         log.info("Send Producer Entity = [{}, {}]:", new Object[] {destinationQueue, personEntity.toString()});
         jmsTemplate.convertAndSend(destinationQueue, personEntity, message -> {
             message.setJMSExpiration(1000);
-            message.setStringProperty("jms-custom-header", "This is a custom jms property v1");
-            message.setBooleanProperty("jms-custom-property", true);
-            message.setDoubleProperty("jms-custom-property-price", 1.0);
+            message.setJMSDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            message.setStringProperty("JMS_CUSTOM_HEADER", "This is a custom jms property v1");
+            message.setBooleanProperty("JMS_CUSTOM_PROPERTY", true);
+            message.setDoubleProperty("JMS_CUSTOM_PROPERTY_PRICE", 1.0);
             return message;
         });
     }
