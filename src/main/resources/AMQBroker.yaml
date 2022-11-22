@@ -1,0 +1,37 @@
+apiVersion: broker.amq.io/v2alpha5
+kind: ActiveMQArtemis
+metadata:
+  name: amq-broker
+  namespace: amq
+spec:
+  acceptors:
+    - expose: true
+      name: acceptor
+      port: 51515
+      protocols: all
+  addressSettings:
+    addressSetting:
+      - autoCreateAddresses: true
+        autoCreateDeadLetterResources: true
+        autoCreateExpiryResources: true
+        autoCreateQueues: true
+        autoDeleteQueues: false
+  adminPassword: admin2
+  adminUser: admin2
+  console:
+    expose: true
+    sslEnabled: true
+    sslSecret: amq-app-secret
+  deploymentPlan:
+    size: 1
+    persistenceEnabled: true
+    requireLogin: false
+    messageMigration: true
+    managementRBACEnabled: true
+    journalType: nio
+    enableMetricsPlugin: true
+    jolokiaAgentEnabled: true
+    clustered: true
+  upgrades:
+    enabled: false
+    minor: false

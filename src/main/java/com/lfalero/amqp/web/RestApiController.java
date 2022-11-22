@@ -27,7 +27,7 @@ public class RestApiController {
         return "Send Person Done = " + p.toString();
     }
 
-    @RequestMapping(value="/produce2")
+    @RequestMapping(value="/produce2", consumes = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public String produce2(@RequestParam("msg") String msg){
         producer.send2(msg);
         return "Done2";
@@ -37,5 +37,11 @@ public class RestApiController {
     public String produce2(@RequestBody PersonEntity p){
         producer.send2(p);
         return "Send Person Done2 = " + p.toString();
+    }
+
+    @PostMapping(value="/produce3", consumes = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public String produce3(@RequestBody String p){
+        producer.send2(p);
+        return "Send Person Done2 = " + p;
     }
 }
