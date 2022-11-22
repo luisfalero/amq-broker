@@ -21,7 +21,9 @@ public class RestApiController {
         return "Done";
     }
 
-    @RequestMapping(value="/produce", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+    @RequestMapping(value="/produce", method = RequestMethod.POST,
+            consumes = MediaType.TEXT_PLAIN_VALUE,
+            produces = MediaType.TEXT_PLAIN_VALUE)
     public String produce(@RequestBody PersonEntity p){
         producer.send(p);
         return "Send Person Done" + p.toString();
@@ -33,7 +35,9 @@ public class RestApiController {
         return "Done2";
     }
 
-    @RequestMapping(value="/produce2", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+    @RequestMapping(value="/produce2", method = RequestMethod.POST,
+            consumes = MediaType.TEXT_PLAIN_VALUE,
+            produces = MediaType.TEXT_PLAIN_VALUE)
     public String produce2(@RequestBody PersonEntity p){
         producer.send2(p);
         return "Send Person Done2" + p.toString();
