@@ -30,6 +30,7 @@ public class JmsProducer {
             message.setStringProperty(CommonsContants.JMS_CUSTOM_HEADER_01, "This is a custom jms property v2");
             message.setBooleanProperty(CommonsContants.JMS_CUSTOM_HEADER_02, true);
             message.setDoubleProperty(CommonsContants.JMS_CUSTOM_HEADER_03, 2.0);
+            log.info("Send Producer Message = [{}]:", message);
             return message;
         });
     }
@@ -42,6 +43,7 @@ public class JmsProducer {
             message.setStringProperty(CommonsContants.JMS_CUSTOM_HEADER_01, "This is a custom jms property v2");
             message.setBooleanProperty(CommonsContants.JMS_CUSTOM_HEADER_02, true);
             message.setDoubleProperty(CommonsContants.JMS_CUSTOM_HEADER_03, 2.0);
+            log.info("Send Producer Message = [{}]:", message);
             return message;
         });
     }
