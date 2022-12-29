@@ -1,0 +1,31 @@
+---------------------------
+PRODUCER
+---------------------------
+
+curl  -k -X POST 'https://amq-broker-test.apps.ocpdev01.dombif.peru/producer/example-string' \
+ --header 'Content-Type: text/plain' --data-raw '{
+    "id": "1",
+    "name": "Alberto Falero"
+}'
+
+curl  -k -X POST 'http://localhost:8080/producer/example-string' \
+ --header 'Content-Type: text/plain' --data-raw '{
+    "id": "1",
+    "name": "Alberto Falero"
+}'
+
+---------------------------
+PRODUCER AND CONSUMER
+---------------------------
+
+curl -X POST 'http://localhost:8080/producer-consumer/example-string' \
+ --header 'Content-Type: text/plain' --data-raw '{
+    "id": "1",
+    "name": "Alberto Falero"
+}'
+
+curl -k -X POST 'https://amq-broker-test.apps.ocpdev01.dombif.peru/producer-consumer/example-string' \
+ --header 'Content-Type: text/plain' --data-raw '{
+    "id": "1",
+    "name": "Alberto Falero"
+}'
